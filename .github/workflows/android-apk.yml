@@ -2,23 +2,33 @@ name: Android APK
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, master]
   pull_request:
-    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.0'
-          channel: 'stable'
-      - run: flutter pub get
-      - run: flutter test
-      - run: flutter build apk --release
-      - uses: actions/upload-artifact@v4
-        with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          channel: stable
+
+      - name: Bootstrap platforms if missing
+        run: |
+          if [ ! -f android/app/build.gradle ]; then
+            flutter create . --project-name measure_reality --org com.measurereality --platforms=ios,android
+          fi
+          mkdir -p android/app/src/main/kotlin/com/measurereality
+          cp -f native/android/*.kt android/app/src/main/kotlin/com/measurereality/ || true
+
+      - name: Dependencies
+        run: flutter pub get
+
+      - name: Test
+        run: flutter test
+
+      - name: Build APK
+        run: flutter build apk --release

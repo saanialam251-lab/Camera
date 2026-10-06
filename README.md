@@ -2,6 +2,31 @@
 
 **Expanded Build Spec v2** implementation in Flutter.
 
+
+## First-time setup (required for iOS / Android builds)
+
+This repo ships Dart sources + native bridges. Official Flutter platform folders
+must be generated once on a machine with the Flutter SDK:
+
+```bash
+# From repo root
+./tool/bootstrap_platforms.sh
+# or manually:
+flutter create . --project-name measure_reality --org com.measurereality --platforms=ios,android
+flutter pub get
+```
+
+Then build:
+
+```bash
+flutter build ios --release --no-codesign   # macOS only
+flutter build apk --release
+```
+
+If you see **Application not configured for iOS**, the `ios/Runner.xcodeproj` is
+missing — run the bootstrap command above (it does not overwrite `lib/`).
+
+
 ## Golden Rules (apply to everything)
 
 1. The endpoint is **never** auto-locked. Only the SET END POINT button (or a deliberate tap) commits it.

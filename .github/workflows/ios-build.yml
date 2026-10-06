@@ -2,20 +2,31 @@ name: iOS Build
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, master]
   pull_request:
-    branches: [main]
 
 jobs:
   build:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.0'
-          channel: 'stable'
-      - run: flutter pub get
-      - run: flutter test
-      - run: flutter build ios --release --no-codesign
-      # Signed IPA requires secrets (TEAM_ID, PROVISIONING_PROFILE, etc.) – P6
+          channel: stable
+
+      - name: Bootstrap platforms if missing
+        run: |
+          if [ ! -f ios/Runner.xcodeproj/project.pbxproj ]; then
+            flutter create . --project-name measure_reality --org com.measurereality --platforms=ios,android
+            mkdir -p android/app/src/main/kotlin/com/measurereality
+            cp -f native/android/*.kt android/app/src/main/kotlin/com/measurereality/ || true
+            cp -f native/ios/*.swift ios/Runner/ || true
+          fi
+
+      - name: Dependencies
+        run: flutter pub get
+
+      - name: Build iOS (no codesign)
+        run: flutter build ios --release --no-codesign
