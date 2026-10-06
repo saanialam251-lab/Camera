@@ -18,7 +18,7 @@ class MeasureController extends StateNotifier<LiveMeasurement> {
             reasons: [],
           ),
           state: MeasureWorkflowState.idle,
-          instruction: 'Choose a mode to begin',
+          instruction: 'Choose a mode — hand mark points with the reticle',
           primaryLabel: 'START',
           primaryEnabled: false,
         ));
@@ -169,16 +169,16 @@ class MeasureController extends StateNotifier<LiveMeasurement> {
   (String, String, bool, bool) _primaryFor(MeasureWorkflowState s) {
     switch (s) {
       case MeasureWorkflowState.idle:
-        return ('Choose a mode to begin', 'START', false, false);
+        return ('Choose a mode — hand mark points with the reticle', 'START', false, false);
       case MeasureWorkflowState.scanning:
         return ('Move slowly', '…', false, true);
       case MeasureWorkflowState.ready:
-        return ('Tap START', 'START', true, false);
+        return ('Aim reticle, then tap START', 'START', true, false);
       case MeasureWorkflowState.startLocked:
       case MeasureWorkflowState.stretching:
-        return ('Move to endpoint', 'SET END POINT', true, false);
+        return ('Aim at end (any point), then SET END POINT', 'SET END POINT', true, false);
       case MeasureWorkflowState.endPreview:
-        return ('Endpoint ready', 'SET END POINT', true, false);
+        return ('Hand mark ready — tap SET END POINT', 'SET END POINT', true, false);
       case MeasureWorkflowState.complete:
         return ('Measurement complete', 'SAVE', true, false);
       case MeasureWorkflowState.trackingLost:

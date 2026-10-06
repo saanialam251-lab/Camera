@@ -139,13 +139,13 @@ class RoomBuilder {
   String get stageInstruction {
     switch (stage) {
       case RoomScanStage.floor:
-        return 'Scan the floor';
+        return 'Point at the floor and move slowly (coverage fills)';
       case RoomScanStage.walls:
-        return 'Slowly turn to the walls';
+        return 'Hand-mark walls: aim + tap at corners or along edges';
       case RoomScanStage.ceiling:
-        return 'Look at the ceiling';
+        return 'Optional: look up to capture ceiling height';
       case RoomScanStage.complete:
-        return 'Room scan complete';
+        return 'Room complete — review and export';
     }
   }
 

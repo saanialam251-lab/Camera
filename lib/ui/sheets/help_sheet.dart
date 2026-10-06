@@ -137,4 +137,25 @@ class HelpContent {
         'This avoids accidental measurements when the phone moves.',
     advanced: null,
   );
+
+  static const handMark = (
+    title: 'Hand mark (basic method)',
+    body:
+        'The basic reliable way to measure is to aim the reticle at any visible point and tap START or SET END POINT. '
+        'You do not need a corner or edge. Use your hand (the phone reticle) to choose start and end. '
+        'Corners and snap are optional assist only — turn Snap Off for pure freehand marks.',
+    advanced:
+        'Endpoint is never auto-locked. Only the SET END POINT button commits. Undo removes the last mark or snap.',
+  );
+
+  static const roomCorners = (
+    title: 'Room corners and walls',
+    body:
+        'In a room, mark walls by aiming and tapping. Corners are useful for rectangular rooms but not required. '
+        'You may mark several points along a long wall, or mix corners with mid-edge points. '
+        'If a corner is wrong: Undo, stand closer, aim again, and tap — correct by hand.',
+    advanced:
+        'Snap can gently pull toward a detected corner; one-tap undo clears a bad snap. Coverage meter tracks floor scan quality.',
+  );
+
 }
