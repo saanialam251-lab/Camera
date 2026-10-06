@@ -1,0 +1,52 @@
+name: measure_reality
+description: AR Precision Measurement App – Expanded Build Spec v2
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+  flutter: '>=3.24.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+
+  # Persistence
+  shared_preferences: ^2.3.3
+  path_provider: ^2.1.5
+  sqflite: ^2.4.1
+  path: ^1.9.0
+
+  # Platform channels / sensors
+  sensors_plus: ^6.1.0
+
+  # UI helpers
+  google_fonts: ^6.2.1
+  flutter_svg: ^2.0.14
+  intl: ^0.19.0
+
+  # Export (P5 – already declared)
+  pdf: ^3.11.1
+  printing: ^5.13.4
+  csv: ^6.0.0
+  share_plus: ^10.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.13
+  riverpod_generator: ^2.6.2
+  mockito: ^5.4.4
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/tutorial/
+    - assets/sounds/
