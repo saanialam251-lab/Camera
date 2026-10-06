@@ -3,28 +3,22 @@
 **Expanded Build Spec v2** implementation in Flutter.
 
 
-## First-time setup (required for iOS / Android builds)
+## Platform
 
-This repo ships Dart sources + native bridges. Official Flutter platform folders
-must be generated once on a machine with the Flutter SDK:
+**Android only.** iOS is not included.
+
+## First-time setup
 
 ```bash
-# From repo root
 ./tool/bootstrap_platforms.sh
-# or manually:
-flutter create . --project-name measure_reality --org com.measurereality --platforms=ios,android
+# or:
+flutter create . --project-name measure_reality --org com.measurereality --platforms=android
 flutter pub get
-```
-
-Then build:
-
-```bash
-flutter build ios --release --no-codesign   # macOS only
+flutter test
 flutter build apk --release
 ```
 
-If you see **Application not configured for iOS**, the `ios/Runner.xcodeproj` is
-missing — run the bootstrap command above (it does not overwrite `lib/`).
+Do **not** run `flutter build ios` — this project is Android-only.
 
 
 ## Golden Rules (apply to everything)

@@ -1,11 +1,5 @@
 name: Release
 
-# P6 – tagged release with test gates
-# Release gates (Section 13):
-#   - 0 crashes in test suite
-#   - flutter test must pass (geometry, filters, controller, snap, level, room, calibration, exporters, replay)
-#   - signed APK + AAB on tag v*
-
 on:
   push:
     tags:
@@ -20,15 +14,20 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.0'
-          channel: 'stable'
+          channel: stable
+
+      - name: Bootstrap Android if needed
+        run: |
+          if [ ! -f android/app/build.gradle ]; then
+            flutter create . --project-name measure_reality --org com.measurereality --platforms=android
+          fi
+          mkdir -p android/app/src/main/kotlin/com/measurereality
+          cp -f native/android/*.kt android/app/src/main/kotlin/com/measurereality/ || true
 
       - name: Dependencies
         run: flutter pub get
 
-      - name: Analyze
-        run: flutter analyze --no-fatal-infos || true
-
-      - name: Unit + replay tests (release gates)
+      - name: Unit tests
         run: flutter test
 
       - name: Build APK

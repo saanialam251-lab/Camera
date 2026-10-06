@@ -16,10 +16,10 @@ jobs:
           flutter-version: '3.24.0'
           channel: stable
 
-      - name: Bootstrap platforms if missing
+      - name: Bootstrap Android if needed
         run: |
           if [ ! -f android/app/build.gradle ]; then
-            flutter create . --project-name measure_reality --org com.measurereality --platforms=ios,android
+            flutter create . --project-name measure_reality --org com.measurereality --platforms=android
           fi
           mkdir -p android/app/src/main/kotlin/com/measurereality
           cp -f native/android/*.kt android/app/src/main/kotlin/com/measurereality/ || true
@@ -32,3 +32,9 @@ jobs:
 
       - name: Build APK
         run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
