@@ -27,7 +27,8 @@ class Confidence {
     required double depthSourceQuality, // 1.0 hardware → 0.25 feature
     required double cameraSpeed, // m/s
     required double featureDensity, // 0–1
-    required double lightingQuality, // 0–1
+    required double lightingQuality, // 0-1
+    double blurScore = 1.0, // 1=sharp 0=blurry
     required double sampleVariance, // m²
     required double distanceToSurface, // m
   }) {
@@ -51,8 +52,11 @@ class Confidence {
     if (cameraSpeed > 0.8) reasons.add('Fast movement');
 
     // Feature + lighting 15%
-    final envScore = ((featureDensity + lightingQuality) / 2).clamp(0.0, 1.0) * 15;
+    final envScore = ((featureDensity + lightingQuality) / 2 * (0.5 + 0.5 * blurScore.clamp(0.0, 1.0))).clamp(0.0, 1.0) * 15;
     if (lightingQuality < 0.4) reasons.add('Low light');
+    if (blurScore < 0.45) reasons.add('Blurry image');
+    // blur pulls env score down
+    final blurFactor = blurScore.clamp(0.0, 1.0);
     if (featureDensity < 0.3) reasons.add('Low feature density / blank surface');
 
     // Sample variance 10%

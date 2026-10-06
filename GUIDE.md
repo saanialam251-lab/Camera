@@ -118,3 +118,39 @@ Mark length, width, height edges with start/end hand marks on each edge.
 Every number shows **confidence** and **+/- error**.  
 Tap the badge for reasons (fast movement, low light, no depth, etc.).  
 Phone AR is typically within about 1–3% in good conditions — not a certified instrument.
+
+---
+
+## Camera quality (must be viable)
+
+If the image is **blurry**, dark, or tracking is lost, marks are not listing-grade.
+
+| Level | What you see | What to do |
+|-------|----------------|------------|
+| **Good** | Clear picture, stable reticle | Mark start/end normally |
+| **Fair** | Soft or dim | Hold still; optional loupe |
+| **Poor** | Blurry / weak | Loupe + **pinch** to fine-adjust, then lock |
+| **Unusable** | Not viable | START / SET END blocked until view improves |
+
+**Tips when blurry**
+1. Add light; avoid pure white walls.
+2. Tap to focus; hold the phone still 1 second.
+3. Move closer (1–2 m from the wall for listing lengths).
+4. Open **loupe**; **pinch** to nudge the mark; then press SET END POINT.
+5. Only share **Medium** or **High** confidence numbers.
+
+Blur and low light also lower the confidence badge and widen the error range.
+
+---
+
+## Selling a room — which points to mark
+
+1. **Length** — floor-wall junction, one end → opposite end (hand mark).  
+2. **Width** — same on the adjacent wall.  
+3. **Ceiling height** — floor base → ceiling (or top of wall).  
+4. **Corners** (optional but best for plan) — each floor corner if visible.  
+5. **Door / windows** (optional) — clear jamb edges.  
+6. **Alcoves** — every direction change by hand.
+
+Hidden corner? Mark the nearest visible wall point and note it.  
+Re-measure length/width once; if they differ by more than ~2%, measure again.
