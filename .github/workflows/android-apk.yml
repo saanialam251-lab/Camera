@@ -23,6 +23,11 @@ jobs:
           fi
           mkdir -p android/app/src/main/kotlin/com/measurereality
           cp -f native/android/*.kt android/app/src/main/kotlin/com/measurereality/ || true
+          # Ensure launcher icon exists (CI failure was missing mipmap/ic_launcher)
+          if [ ! -f android/app/src/main/res/mipmap-hdpi/ic_launcher.png ]; then
+            echo "ERROR: ic_launcher.png missing"
+            exit 1
+          fi
 
       - name: Dependencies
         run: flutter pub get
