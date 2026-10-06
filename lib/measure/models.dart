@@ -11,6 +11,7 @@ enum MeasureMode {
   level,
   room,
   object,
+  land, // outdoor plot / parcel – high precision perimeter + area
 }
 
 /// Single 3D point with optional AR anchor references.

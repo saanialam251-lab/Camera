@@ -154,3 +154,26 @@ Blur and low light also lower the confidence badge and widen the error range.
 
 Hidden corner? Mark the nearest visible wall point and note it.  
 Re-measure length/width once; if they differ by more than ~2%, measure again.
+
+---
+
+## Land / plot (not only rooms)
+
+The app measures **rooms and land**. Land mode is for outdoor parcels, fields, and landmarks.
+
+1. START at a boundary mark (post, corner, stone).  
+2. Walk the edge; add a point at every turn (hand mark).  
+3. **Close** the loop → **perimeter** + **area** (m², acres, hectares).  
+4. High precision is default for land — more samples per point.  
+5. Share only Medium/High confidence values.
+
+Rooms remain available for indoor work; land is separate and built for larger outdoor loops.
+
+---
+
+## Units & white UI
+
+- Units stay fully supported (m, cm, mm, ft, in, fractions, m², acres, ha).  
+- Results, history, settings, and unit pickers use a **white** surface theme.  
+- Camera measure view stays dark over the live feed.  
+- Buttons, values, and cards use **motion** (scale, fade, slide) across the app.

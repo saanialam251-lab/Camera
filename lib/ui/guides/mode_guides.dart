@@ -281,6 +281,52 @@ class ModeGuides {
     options: ['Parcel volumetric weight estimator'],
   );
 
+
+  static const land = ModeGuide(
+    id: 'land',
+    name: 'Land / plot',
+    summary:
+        'Measure outdoor land, parcels, and landmarks with high precision. Not limited to rooms.',
+    steps: [
+      GuideStep(
+        title: '1. Start at a boundary mark',
+        body:
+            'Stand at a clear corner or fence post of the plot. Aim the reticle and tap START. '
+            'Hand mark is the basic method — corners help but are not required.',
+        tip: 'Good light and slow movement improve outdoor accuracy.',
+      ),
+      GuideStep(
+        title: '2. Walk the boundary',
+        body:
+            'Walk along the edge of the land. At every corner or change of direction, aim and add a point. '
+            'You can mark fence posts, stones, or any visible landmark.',
+      ),
+      GuideStep(
+        title: '3. Close the plot',
+        body:
+            'When you return near the start, tap Close. Perimeter and area are computed '
+            '(m², acres, hectares). High-precision mode uses more samples per point.',
+      ),
+      GuideStep(
+        title: '4. Review confidence',
+        body:
+            'Only use Medium/High confidence for legal or sale-related figures. '
+            'Re-walk one side if values look inconsistent.',
+      ),
+    ],
+    keys: [
+      'START / Add point — boundary vertex at reticle',
+      'Close — finishes the land loop',
+      'Undo — removes last vertex',
+      'High precision — on by default for land',
+    ],
+    options: [
+      'Units: m, m², acres, hectares',
+      'Snap optional along fence lines',
+      'Export plan + area',
+    ],
+  );
+
   static const all = [
     distance,
     path,
@@ -290,6 +336,7 @@ class ModeGuides {
     level,
     room,
     objectMode,
+    land,
   ];
 
   static ModeGuide? byId(String id) {
